@@ -2,6 +2,7 @@
 @section('title','Contact Us')
 @section('content')
     <h1>Contact Us </h1>
+    @if(! session()->has('massage'))
     <form action="/contact" method="post">
         <div class="form-group ">
             <label for="name">Name </label>
@@ -23,4 +24,5 @@
         @csrf
         <button type="submit" class="btn btn-primary">Send</button>
     </form>
+    @endif
 @endsection
