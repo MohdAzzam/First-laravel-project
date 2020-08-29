@@ -23,6 +23,11 @@ class ContactFormController extends Controller
 
         //Send email
         Mail::to('test@test.com')->send(new ContactFormMail($data));
-        return redirect('/');
+        /*
+         * We can use this one or the other we use it now
+        session()->flash('massage','Thanks for your massages. we\'ll be in touch.');
+        return redirect('contact');
+        */
+        return redirect('contact')->with('massage','Thanks for your massages. we\'ll be in touch.');
     }
 }
