@@ -27,3 +27,7 @@ Route::view('aboutUs', 'about');
 //Route::delete('customers/{customer}','CustomerController@destroy');
 //Route::patch('customers/{customer}','CustomerController@update');
 Route::resource('customers','CustomerController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
