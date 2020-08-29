@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::view('/','home');
-Route::view('contact', 'contact');
+
+
+Route::get('contact','ContactFormController@create');
+Route::post('contact','ContactFormController@store');
 Route::view('aboutUs', 'about');
 //
 //Route::get('customer','CustomerController@index');
