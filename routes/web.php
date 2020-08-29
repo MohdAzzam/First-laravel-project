@@ -26,8 +26,12 @@ Route::view('aboutUs', 'about');
 //Route::get('customers/{customer}/edit','CustomerController@edit');
 //Route::delete('customers/{customer}','CustomerController@destroy');
 //Route::patch('customers/{customer}','CustomerController@update');
-Route::resource('customers','CustomerController');
 
+Route::resource('customers','CustomerController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+/*
+ * we can use the middleware method to prevent an authorized user to show data
+ * ->middleware('auth')
+ * */

@@ -8,7 +8,14 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    /*
+     * ->except('index') if you want the user show the index and prevent any thing else use except
+     * */
+    }
+
     public function index()
     {
 
