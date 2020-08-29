@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 @section('title','Details For'.$customer->name)
 @section('content')
     <div class="row">
