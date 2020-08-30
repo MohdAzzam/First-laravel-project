@@ -3,7 +3,7 @@
 @section('content')
     <h1>Contact Us </h1>
     @if(! session()->has('massage'))
-    <form action="/contact" method="post">
+    <form action="{{route('contact.store')}}" method="post">
         <div class="form-group ">
             <label for="name">Name </label>
             <input class="form-control" type="text" name="name" value="{{ old('name')}}">

@@ -35,7 +35,7 @@ class CustomerController extends Controller
     public function store()
     {
         Customer::create($this->validateRequest());
-        return redirect('customer');
+        return redirect('customers');
     }
 
     public function show(Customer $customer)
@@ -64,7 +64,7 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         $customer->delete();
-        return redirect('customer');
+        return redirect('customers');
 
     }
     private function validateRequest()
