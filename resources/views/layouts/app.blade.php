@@ -29,7 +29,13 @@
 </head>
 <body>
     <div id="app">
+
     @include('nav')
+        @if(session()->has('massage'))
+            <div class="alert alert-success" role="alert">
+                <strong>Success: </strong>{{session()->get('massage')}}
+            </div>
+        @endif
         <main class="py-4">
             <div class="container">
                 @yield('content')
