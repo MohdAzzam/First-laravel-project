@@ -28,6 +28,7 @@ class CustomerController extends Controller
     {
         $companies = Company::all();
         $customer = new Customer();
+
         return view('customers.create', compact('companies', 'customer'));
     }
 

@@ -18,9 +18,9 @@
     <lable for="active">Status</lable>
     <select name="active" id="active" class="form-control">
         <option value="" disabled>Select customer status</option>
-        @foreach($customer->activeOption() as $activeOptionKey=>$activeOptionvalue)
-            <option value="{{$activeOptionKey}}" {{$customer->active==$activeOptionvalue? 'selected':'' }}
-            >{{$activeOptionvalue}}</option>
+        @foreach($customer->activeOption() as $activeOptionKey=>$activeOptionValue)
+            <option value="{{$activeOptionKey}}" {{$customer->active==$activeOptionValue? 'selected':'' }}
+            >{{$activeOptionValue}}</option>
         @endforeach
     </select>
 </div>

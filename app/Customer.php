@@ -13,6 +13,9 @@ class Customer extends Model
 /// quz we validate all feild on controller we can go a head
 
     protected $guarded=[];
+    protected $attributes=[
+        'active'=>'active'
+    ];
 
     public function scopeActive($query){
         return $query->where('active', 'active');
@@ -27,6 +30,7 @@ class Customer extends Model
  * This Function To change what inside Attribute*/
     public function getActiveAttribute($attribute)
     {
+
         return $this->activeOption()[$attribute];
     }
 
@@ -35,7 +39,8 @@ class Customer extends Model
         return [
             'active' =>"Active",
             'inactive' =>"Inactive"
-            ,'In-progress'=>'In-progress'
+            ,'In-progress'=>'In-progress',
+
 
         ];
     }
