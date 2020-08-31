@@ -4,13 +4,13 @@
     <div class="row">
         <div class="col-12">
             <h1 class="text-center">Customers </h1>
-                <a class="nav-link " href="{{route('customers.create')}}">Add Customer</a>
+            <a class="nav-link " href="{{route('customers.create')}}">Add Customer</a>
 
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <h3>Active Customer</h3>
+            <h3>Customer</h3>
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -32,14 +32,9 @@
                         <td>{{$customer->phoneNumber}}</td>
                         <td>{{$customer->active}}</td>
                         <td>{{$customer->company->name}}</td>
-                        <td><a class="btn btn-primary" href="{{route('customers.show',['customer'=>$customer])}}">View</a></td>
-                        <form action="{{route('customers.destroy',['customer'=>$customer])}}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <td><button class="btn btn-danger" type="submit">Delete</button></td>
-
-                        </form>
-
+                        <td><a class="btn btn-primary" href="{{ route('customers.show', ['customer'=>$customer]) }}"
+                            >View</a>
+                        </td>
                     </tr>
 
                 @endforeach

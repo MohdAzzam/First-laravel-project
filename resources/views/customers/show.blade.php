@@ -20,6 +20,7 @@
                     <td scope="col">Status</td>
                     <td scope="col">Company Name</td>
                     <td></td>
+                    <td></td>
                 </tr>
                 </thead>
                 <tr>
@@ -30,9 +31,19 @@
                     <td>{{$customer->active}}</td>
                     <td>{{$customer->company->name}}</td>
                     <td><a class="btn btn-primary" href="/customers/{{$customer->id}}/edit">Edit</a></td>
+
                 </tr>
 
             </table>
+
+            <form action="{{route('customers.destroy',['customer'=>$customer])}}" method="POST">
+                @method("DELETE")
+                @csrf
+                <td>
+                    <button style="margin-left: 350px;" class="btn btn-danger col-4" type="submit">Delete</button>
+                </td>
+            </form>
+
         </div>
     </div>
 

@@ -13,8 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
+                    <h5>welcome </h5>
+{{--                    <my-button type="submit" text="But"></my-button>--}}
                 </div>
             </div>
         </div>
