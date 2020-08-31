@@ -4,52 +4,40 @@
     <div class="row">
         <div class="col-12">
             <h1 class="text-center">Details for {{$customer->name}}</h1>
-
         </div>
     </div>
-    <div class="row">
+
+    <div class="row ">
         <div class="col-12">
-            <h3>Active Customer</h3>
-            <table class="table table-hover table-striped">
-                <thead>
-                <tr>
-                    <td scope="col">Id</td>
-                    <td scope="col">Name</td>
-                    <td scope="col">Email</td>
-                    <td scope="col">Phone Number</td>
-                    <td scope="col">Status</td>
-                    <td scope="col">Company Name</td>
-                    <td>Profile Picture</td>
-                    <td>View</td>
-                </tr>
-                </thead>
-                <tr>
-                    <td>{{$customer->id}}</td>
-                    <td>{{$customer->name}}</td>
-                    <td>{{$customer->email}}</td>
-                    <td>{{$customer->phoneNumber}}</td>
-                    <td>{{$customer->active}}</td>
-                    <td>{{$customer->company->name}}</td>
-                    <td>
-                        @if($customer->image)
-                            <img style="max-width: 10%" src="{{asset('storage/'.$customer->image)}}"alt="" class="img-thumbnail">
-                        @endif
-                    </td>
-                    <td><a class="btn btn-primary" href="/customers/{{$customer->id}}/edit">Edit</a></td>
+            <div class="card" style="width: 18rem; margin-left: 350px;margin-top: 20px;">
+                @if($customer->image)
+                    <img src="{{asset('storage/'.$customer->image)}}" class="card-img-top" alt="...">
+                @endif
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{$customer->name}}</h5>
+                    <h6 class="card-text py-2">
 
-                </tr>
+                        <strong>Customer Id :</strong> {{$customer->id}}<br><br>
+                        <strong>Company Name :</strong> {{$customer->company->name}}<br><br>
+                        <strong>Email :</strong> {{$customer->email}}<br><br>
+                        <strong>Phone Number :</strong> {{$customer->phoneNumber}}<br><br>
+                        <strong>Customer Type :</strong> {{$customer->active}}<br>
 
-            </table>
 
-            <form action="{{route('customers.destroy',['customer'=>$customer])}}" method="POST">
-                @method("DELETE")
-                @csrf
-                <td>
-                    <button style="margin-left: 350px;" class="btn btn-danger col-4" type="submit">Delete</button>
-                </td>
-            </form>
+                    </h6>
+                    <a class="btn btn-primary d-flex flex-column " href="/customers/{{$customer->id}}/edit">Edit</a>
+                    <br>
+                    <form action="{{route('customers.destroy',['customer'=>$customer])}}" method="POST">
+                        @method("DELETE")
+                        @csrf
+                        <div class="d-flex flex-column ">
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </div>
 
+                    </form>
+
+                </div>
+            </div>
         </div>
     </div>
-
 @endsection

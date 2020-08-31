@@ -8,6 +8,7 @@ use App\Events\NewCustomerHasRegisterdEvent;
 use App\Mail\WelcomeNewUserMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Intervention\Image\Facades\Image;
 
 class CustomerController extends Controller
 {
@@ -82,19 +83,28 @@ class CustomerController extends Controller
 
     private function validateRequest()
     {
-        return tap(request()->validate([
+        return request()->validate([
             'name' => 'required|min:3',
             'email' => 'required|email',
             'phoneNumber' => 'required|min:10',
             'active' => 'required',
-            'company_id' => 'required'
-        ]), function () {
-            if (\request()->hasFile('image')) {
-                \request()->validate([
-                    'image' => 'file|image|max:7000',
-                ]);
-            }
-        });
+            'company_id' => 'required',
+            'image' => 'sometimes|file|image|max:7000',
+
+        ]);
+//        return tap(request()->validate([
+//            'name' => 'required|min:3',
+//            'email' => 'required|email',
+//            'phoneNumber' => 'required|min:10',
+//            'active' => 'required',
+//            'company_id' => 'required'
+//        ]), function () {
+//            if (\request()->hasFile('image')) {
+//                \request()->validate([
+//                    'image' => 'file|image|max:7000',
+//                ]);
+//            }
+//        });
     }
 
     private function storeImage($customer)
@@ -105,5 +115,7 @@ class CustomerController extends Controller
                 'image'=>\request()->image->store('uploads','public'),
             ]);
         }
+        $image =Image::make(public_path('storage/'.$customer->image))->fit(200,200);
+        $image->save();
     }
 }
