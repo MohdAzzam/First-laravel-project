@@ -19,8 +19,8 @@
                     <td scope="col">Phone Number</td>
                     <td scope="col">Status</td>
                     <td scope="col">Company Name</td>
-                    <td></td>
-                    <td></td>
+                    <td>Profile Picture</td>
+                    <td>View</td>
                 </tr>
                 </thead>
                 <tr>
@@ -30,6 +30,11 @@
                     <td>{{$customer->phoneNumber}}</td>
                     <td>{{$customer->active}}</td>
                     <td>{{$customer->company->name}}</td>
+                    <td>
+                        @if($customer->image)
+                            <img style="max-width: 10%" src="{{asset('storage/'.$customer->image)}}"alt="" class="img-thumbnail">
+                        @endif
+                    </td>
                     <td><a class="btn btn-primary" href="/customers/{{$customer->id}}/edit">Edit</a></td>
 
                 </tr>

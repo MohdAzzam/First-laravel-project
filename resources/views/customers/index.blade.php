@@ -21,7 +21,6 @@
                     <td scope="col">Status</td>
                     <td scope="col">Company Name</td>
                     <td></td>
-                    <td></td>
                 </tr>
                 </thead>
                 @foreach($customers as $customer)

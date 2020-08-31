@@ -14,9 +14,9 @@ class CustomerController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    /*
-     * ->except('index') if you want the user show the index and prevent any thing else use except
-     * */
+        /*
+         * ->except('index') if you want the user show the index and prevent any thing else use except
+         * */
     }
 
     public function index()
@@ -37,8 +37,8 @@ class CustomerController extends Controller
 
     public function store()
     {
-        $customer=Customer::create($this->validateRequest());
-
+        $customer = Customer::create($this->validateRequest());
+        $this->storeImage($customer);
         event(new NewCustomerHasRegisterdEvent($customer));
 
         return redirect('customers');
@@ -63,6 +63,7 @@ class CustomerController extends Controller
     {
 
         $customer->update($this->validateRequest());
+        $this->storeImage($customer);
 
         return redirect('customers/' . $customer->id);
     }
@@ -78,21 +79,31 @@ class CustomerController extends Controller
         return redirect('customers');
 
     }
+
     private function validateRequest()
     {
-        
-        $validatedData= request()->validate([
+        return tap(request()->validate([
             'name' => 'required|min:3',
             'email' => 'required|email',
             'phoneNumber' => 'required|min:10',
             'active' => 'required',
             'company_id' => 'required'
-        ]);
-        if (\request()->hasFile('image')){
-            \request()->validate([
-               'image'=>'file|image|max:7000',
+        ]), function () {
+            if (\request()->hasFile('image')) {
+                \request()->validate([
+                    'image' => 'file|image|max:7000',
+                ]);
+            }
+        });
+    }
+
+    private function storeImage($customer)
+    {
+        //image returning the uploaded file class
+        if (\request()->has('image')){
+            $customer->update([
+                'image'=>\request()->image->store('uploads','public'),
             ]);
         }
-        return $validatedData;
     }
 }
