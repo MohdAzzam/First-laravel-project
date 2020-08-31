@@ -20,6 +20,7 @@ class CreateCustomersTable extends Migration
             $table->string('email');
             $table->string('phoneNumber');
             $table->string('active');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

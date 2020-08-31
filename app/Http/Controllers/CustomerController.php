@@ -80,12 +80,19 @@ class CustomerController extends Controller
     }
     private function validateRequest()
     {
-        return request()->validate([
+        
+        $validatedData= request()->validate([
             'name' => 'required|min:3',
             'email' => 'required|email',
             'phoneNumber' => 'required|min:10',
             'active' => 'required',
             'company_id' => 'required'
         ]);
+        if (\request()->hasFile('image')){
+            \request()->validate([
+               'image'=>'file|image|max:7000',
+            ]);
+        }
+        return $validatedData;
     }
 }
