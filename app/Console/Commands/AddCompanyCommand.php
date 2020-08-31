@@ -26,6 +26,7 @@ class AddCompanyCommand extends Command
      *
      * @return int
      */
+    //class based command
     public function handle()
     {
         $name = $this->ask('What is Your Company Name');
