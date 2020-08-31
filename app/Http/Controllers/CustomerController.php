@@ -83,7 +83,7 @@ class CustomerController extends Controller
         return request()->validate([
             'name' => 'required|min:3',
             'email' => 'required|email',
-            'phoneNumber' => 'required|numeric|min:10',
+            'phoneNumber' => 'required|min:10',
             'active' => 'required',
             'company_id' => 'required'
         ]);
