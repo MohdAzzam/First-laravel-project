@@ -34,10 +34,16 @@
                         <td><a class="btn btn-primary" href="{{ route('customers.show', ['customer'=>$customer]) }}"
                             >View</a>
                         </td>
+
                     </tr>
 
                 @endforeach
             </table>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    {{$customers->links()}}
+                </div>
+            </div>
         </div>
     </div>
 

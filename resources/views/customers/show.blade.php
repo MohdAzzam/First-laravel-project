@@ -8,8 +8,8 @@
     </div>
 
     <div class="row ">
-        <div class="col-12">
-            <div class="card" style="width: 18rem; margin-left: 350px;margin-top: 20px;">
+        <div class="col-12 d-flex justify-content-center pt-3">
+            <div class="card" style="width: 18rem;">
                 @if($customer->image)
                     <img src="{{asset('storage/'.$customer->image)}}" class="card-img-top" alt="...">
                 @endif
