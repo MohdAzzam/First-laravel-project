@@ -6,9 +6,11 @@ use App\Company;
 use App\Customer;
 use App\Events\NewCustomerHasRegisterdEvent;
 use App\Mail\WelcomeNewUserMail;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Intervention\Image\Facades\Image;
+use Ramsey\Uuid\Type\Integer;
 
 class CustomerController extends Controller
 {
@@ -38,6 +40,7 @@ class CustomerController extends Controller
 
     public function store()
     {
+        $this->authorize('create',Customer::class);
         $customer = Customer::create($this->validateRequest());
         $this->storeImage($customer);
         event(new NewCustomerHasRegisterdEvent($customer));
@@ -47,6 +50,7 @@ class CustomerController extends Controller
 
     public function show(Customer $customer)
     {
+        $this->authorize('view',$customer);
         //the variable in method should be the same on the route
         //$customer=Customer::where('id',$customer)->firstOrFail();
         return view('customers.show', compact('customer'));
@@ -55,6 +59,7 @@ class CustomerController extends Controller
 
     public function edit(Customer $customer)
     {
+        $this->authorize('update',$customer);
         $companies = Company::all();
         return view('customers.edit', compact('customer', 'companies'));
 
@@ -62,7 +67,7 @@ class CustomerController extends Controller
 
     public function update(Customer $customer)
     {
-
+//        $this->authorize('update',$customer);
         $customer->update($this->validateRequest());
         $this->storeImage($customer);
 
@@ -71,12 +76,8 @@ class CustomerController extends Controller
 
     public function destroy(Customer $customer)
     {
-        try {
-            $customer->delete();
-        } catch (\Exception $e) {
-
-        }
-
+        $this->authorize('delete',$customer);
+        $customer->delete();
         return redirect('customers');
 
     }

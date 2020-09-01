@@ -4,13 +4,19 @@
     <div class="row">
         <div class="col-12">
             <h1 class="text-center">Customers </h1>
+
+        </div>
+    </div>
+    @can('create',App\Customer::class)
+        <div class="row">
+        <div class="col-12">
             <a class="nav-link " href="{{route('customers.create')}}">Add Customer</a>
 
         </div>
     </div>
+    @endcan
     <div class="row">
         <div class="col-12">
-            <h3>Customer</h3>
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -31,9 +37,13 @@
                         <td>{{$customer->phoneNumber}}</td>
                         <td>{{$customer->active}}</td>
                         <td>{{$customer->company->name}}</td>
-                        <td><a class="btn btn-primary" href="{{ route('customers.show', ['customer'=>$customer]) }}"
+
+                        <td>
+                            @can('view',$customer)
+                            <a class="btn btn-primary" href="{{ route('customers.show', ['customer'=>$customer]) }}"
                             >View</a>
-                        </td>
+                            @endcan
+                         </td>
 
                     </tr>
 

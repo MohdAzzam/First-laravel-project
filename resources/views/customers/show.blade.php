@@ -25,6 +25,7 @@
 
 
                     </h6>
+
                     <a class="btn btn-primary d-flex flex-column " href="/customers/{{$customer->id}}/edit">Edit</a>
                     <br>
                     <form action="{{route('customers.destroy',['customer'=>$customer])}}" method="POST">
