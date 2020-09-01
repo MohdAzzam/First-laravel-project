@@ -3,6 +3,11 @@
     <input class="form-control" type="text" name="name" value="{{ old('name')?? $customer->name}}">
     <span>{{$errors->first('name')}}</span>
 </div>
+<div class="form-group ">
+    <label for="username">User Name</label>
+    <input class="form-control" type="text" name="username" value="{{ old('username')?? $customer->username}}">
+    <span>{{$errors->first('username')}}</span>
+</div>
 <div class="form-group">
     <label for="email">Email </label>
     <input class="form-control" type="email" name="email" value="{{old('email') ?? $customer->email}}">

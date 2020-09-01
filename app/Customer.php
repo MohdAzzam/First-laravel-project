@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Customer extends Model
 {
@@ -16,6 +17,17 @@ class Customer extends Model
     protected $attributes=[
         'active'=>'active'
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
+
+    public function path()
+    {
+        return url("/customers/{$this->username}");
+        //.Str::slug($this->username)
+    }
 
     public function scopeActive($query){
         return $query->where('active', 'active');

@@ -23,10 +23,10 @@ Route::view('aboutUs', 'about');
 //Route::get('customer','CustomerController@index');
 //Route::get('customers/create','CustomerController@create');
 //Route::post('customer','CustomerController@store');
-//Route::get('customers/{customer}','CustomerController@show');
-//Route::get('customers/{customer}/edit','CustomerController@edit');
+//Route::get('customers/{customer}-{slug}','CustomerController@show');
+//Route::get('customers/{customer}-{slug}/edit','CustomerController@edit');
 //Route::delete('customers/{customer}','CustomerController@destroy');
-//Route::patch('customers/{customer}','CustomerController@update');
+//Route::patch('customers/{customer}-{slug}','CustomerController@update');
 
 Route::resource('customers','CustomerController');
 Auth::routes();

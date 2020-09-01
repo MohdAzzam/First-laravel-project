@@ -11,6 +11,7 @@ $factory->define(\App\Customer::class, function (Faker $faker) {
         'company_id' => function() { return Company::all()->random(); },
         'name'=>$faker->name,
         'email'=>$faker->unique()->safeEmail,
+        'username'=>$faker->unique()->userName,
         'phoneNumber'=>$faker->phoneNumber,
         'active'=>'active',
 

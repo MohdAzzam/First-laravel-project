@@ -32,6 +32,7 @@ class CustomerPolicy
     {
         return in_array($user->email,[
             'admin@admin.com',
+            ''
         ]);
     }
 

@@ -22,6 +22,7 @@
                 <tr>
                     <td scope="col">Id</td>
                     <td scope="col">Name</td>
+                    <td>User Name</td>
                     <td scope="col">Email</td>
                     <td scope="col">Phone Number</td>
                     <td scope="col">Status</td>
@@ -33,6 +34,7 @@
                     <tr>
                         <td>{{$customer->id}}</td>
                         <td>{{$customer->name}}</td>
+                        <td>{{$customer->username}}</td>
                         <td>{{$customer->email}}</td>
                         <td>{{$customer->phoneNumber}}</td>
                         <td>{{$customer->active}}</td>
@@ -40,7 +42,7 @@
 
                         <td>
                             @can('view',$customer)
-                            <a class="btn btn-primary" href="{{ route('customers.show', ['customer'=>$customer]) }}"
+                            <a class="btn btn-primary" href="{{ $customer->path() }}"
                             >View</a>
                             @endcan
                          </td>

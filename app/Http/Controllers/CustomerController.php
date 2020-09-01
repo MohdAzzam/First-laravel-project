@@ -51,6 +51,7 @@ class CustomerController extends Controller
 
     public function show(Customer $customer)
     {
+
         $this->authorize('view',$customer);
         //the variable in method should be the same on the route
         //$customer=Customer::where('id',$customer)->firstOrFail();
@@ -87,8 +88,9 @@ class CustomerController extends Controller
     {
         return request()->validate([
             'name' => 'required|min:3',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:customers',
             'phoneNumber' => 'required|min:10',
+            'username'=>'required|unique:customers',
             'active' => 'required',
             'company_id' => 'required',
             'image' => 'sometimes|file|image|max:7000',

@@ -26,7 +26,7 @@
 
                     </h6>
 
-                    <a class="btn btn-primary d-flex flex-column " href="/customers/{{$customer->id}}/edit">Edit</a>
+                    <a class="btn btn-primary d-flex flex-column " href="{{$customer->path()}}/edit">Edit</a>
                     <br>
                     <form action="{{route('customers.destroy',['customer'=>$customer])}}" method="POST">
                         @method("DELETE")
