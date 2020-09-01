@@ -9,6 +9,7 @@ use App\Mail\WelcomeNewUserMail;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Intervention\Image\Exception\NotReadableException;
 use Intervention\Image\Facades\Image;
 use Ramsey\Uuid\Type\Integer;
 
@@ -116,7 +117,14 @@ class CustomerController extends Controller
                 'image'=>\request()->image->store('uploads','public'),
             ]);
         }
+        try{
         $image =Image::make(public_path('storage/'.$customer->image))->fit(200,200);
         $image->save();
+        }
+        catch(NotReadableException $e)
+        {
+            // If error, stop and continue looping to next iteration
+
+        }
     }
 }
