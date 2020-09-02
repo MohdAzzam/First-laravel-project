@@ -18,6 +18,7 @@
                     <h6 class="card-text py-2">
 
                         <strong>Customer Id :</strong> {{$customer->id}}<br><br>
+                        <strong>User Name :</strong> {{$customer->username}}<br><br>
                         <strong>Company Name :</strong> {{$customer->company->name}}<br><br>
                         <strong>Email :</strong> {{$customer->email}}<br><br>
                         <strong>Phone Number :</strong> {{$customer->phoneNumber}}<br><br>

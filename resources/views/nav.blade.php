@@ -12,16 +12,16 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/">Home</a>
+                    <a class="nav-link active" href="/">{{__('text.home') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/aboutUs">About Us</a>
+                    <a class="nav-link" href="/aboutUs">{{__('text.about_us') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('contact.create')}}">Contact Us</a>
+                    <a class="nav-link" href="{{route('contact.create')}}">{{__('text.contact_us') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="{{route('customers.index')}}">Customer</a>
+                    <a class="nav-link " href="{{route('customers.index')}}">{{__('text.customer') }}</a>
                 </li>
             </ul>
 

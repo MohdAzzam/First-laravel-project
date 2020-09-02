@@ -12,9 +12,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::view('/','home');
+/*
+ * languge
+ Route::get('/',function (){
+    \Illuminate\Support\Facades\App::setLocale('ar');
+    return view('home');
+});
 
-
+*/
 Route::get('contact','ContactFormController@create')->name('contact.create');
 Route::post('contact','ContactFormController@store')->name('contact.store');
 Route::view('aboutUs', 'about');

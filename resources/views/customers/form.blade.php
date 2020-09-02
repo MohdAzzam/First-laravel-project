@@ -6,6 +6,7 @@
 <div class="form-group ">
     <label for="username">User Name</label>
     <input class="form-control" type="text" name="username" value="{{ old('username')?? $customer->username}}">
+
     <span>{{$errors->first('username')}}</span>
 </div>
 <div class="form-group">
