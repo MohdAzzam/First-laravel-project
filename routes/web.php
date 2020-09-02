@@ -13,7 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/','home');
+Route::get('upload-image','UploadsController@index')->name('upload-image');
+Route::delete('/upload-image/{imageUpload}','UploadsController@destroy');
+
+Route::get('/',function (){
+   return view('home');
+});
 /*
  * languge
  Route::get('/',function (){

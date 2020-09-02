@@ -12,7 +12,10 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/">{{__('text.home') }}</a>
+                    <a class="nav-link active" href="home">{{__('text.home') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/upload-image">Gallery</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/aboutUs">{{__('text.about_us') }}</a>
