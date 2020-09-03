@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\ImageUpload;
-use App\Upload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
@@ -12,8 +11,16 @@ use Intervention\Image\Facades\Image;
 
 class UploadsController extends Controller
 {
+    public function __construct()
+    {
+//        $this->middleware('auth');
+        /*
+         * ->except('index') if you want the user show the index and prevent any thing else use except
+         * */
+    }
     public function index()
     {
+//        $this->authorize('index');
         $images=ImageUpload::latest()->get();
         return view ('/upload-image',compact('images'));
 
@@ -21,6 +28,7 @@ class UploadsController extends Controller
 
     public function store()
     {
+//        $this->authorize('create', ImageUpload::class);
         if(!is_dir(public_path('/images'))){
             mkdir(public_path('/images'),0777);
         }
@@ -42,7 +50,7 @@ class UploadsController extends Controller
     }
     public function destroy(ImageUpload $imageUpload)
     {
-//        dd($imageUpload);
+        $this->authorize('delete', $imageUpload);
         File::delete([
             public_path($imageUpload->original),
             public_path($imageUpload->thumbnail),
@@ -51,7 +59,7 @@ class UploadsController extends Controller
         $imageUpload->delete();
 
         //redirect the user
-        return redirect('home');
+        return redirect('upload-image');
     }
 
 }

@@ -20,15 +20,18 @@
 <div class="container">
     <div class="row">
         @foreach($images as $image)
-            <div class="col-2 mb-4">
-                <a href="{{$image->original}}">
+            <div class="col-2 mb-4 mt-4">
+                <a href="{{$image->original}}" target="_blank">
                     <img src="{{$image->thumbnail}}"class="w-100">
                 </a>
+                @can('delete',$image)
                 <form action="/upload-image/{{$image->id}}" method="post">
                     @method('DELETE')
                     @csrf
                     <button class="small btn btn-outline-danger mt-2">Delete</button>
                 </form>
+                @endcan
+
             </div>
         @endforeach
     </div>

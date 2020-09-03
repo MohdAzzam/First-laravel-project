@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Customer;
+use App\ImageUpload;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CustomerPolicy
+class ImageUploadPolicy
 {
     use HandlesAuthorization;
 
@@ -25,16 +25,12 @@ class CustomerPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Customer  $customer
+     * @param  \App\ImageUpload  $imageUpload
      * @return mixed
      */
-    public function view(User $user, Customer $customer)
+    public function view(User $user, ImageUpload $imageUpload)
     {
-        return in_array($user->email,[
-            'admin@admin.com',
-            'admin1@admin.com',
 
-        ]);
     }
 
     /**
@@ -45,6 +41,7 @@ class CustomerPolicy
      */
     public function create(User $user)
     {
+
         return in_array($user->email,[
             'admin@admin.com',
             'admin1@admin.com',
@@ -56,27 +53,24 @@ class CustomerPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Customer  $customer
+     * @param  \App\ImageUpload  $imageUpload
      * @return mixed
      */
-    public function update(User $user, Customer $customer)
+    public function update(User $user, ImageUpload $imageUpload)
     {
-        return in_array($user->email,[
-            'admin@admin.com',
-            'admin1@admin.com',
-
-        ]);
+        //
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Customer  $customer
+     * @param  \App\ImageUpload  $imageUpload
      * @return mixed
      */
-    public function delete(User $user, Customer $customer)
+    public function delete(User $user, ImageUpload $imageUpload)
     {
+
         return in_array($user->email,[
             'admin@admin.com',
             'admin1@admin.com',
@@ -88,10 +82,10 @@ class CustomerPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Customer  $customer
+     * @param  \App\ImageUpload  $imageUpload
      * @return mixed
      */
-    public function restore(User $user, Customer $customer)
+    public function restore(User $user, ImageUpload $imageUpload)
     {
         //
     }
@@ -100,10 +94,10 @@ class CustomerPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Customer  $customer
+     * @param  \App\ImageUpload  $imageUpload
      * @return mixed
      */
-    public function forceDelete(User $user, Customer $customer)
+    public function forceDelete(User $user, ImageUpload $imageUpload)
     {
         //
     }
